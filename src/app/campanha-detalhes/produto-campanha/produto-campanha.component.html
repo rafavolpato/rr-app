@@ -1,0 +1,12 @@
+<div class="col-md-9 col-xs-12">
+ <mt-produto
+    *ngFor="let produto of (produtoCampanha | async)"
+    [produto]="produto" (add)="shoppingCart.addProduto($event)" >
+  </mt-produto>
+
+  <div class="col-md-3 col-xs-12">
+    <mt-shopping-cart #shoppingCart></mt-shopping-cart>
+  </div>
+
+</div>
+

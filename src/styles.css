@@ -38,24 +38,23 @@ body {
   background: #fff;
 }
 .place-info-box-icon {
-  border-top-left-radius: 2px;
+  background-size: cover;
+  /* border-top-left-radius: 2px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 2px;
   display: block;
-  float: left;
-  /*height: 120px;*/
   width: 120px;
   text-align: center;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.2); */
 }
 .place-info-box-icon > img {
   max-width: 100%;
   /*border-right: 1px solid rgba(0, 0, 0, 0.1);*/
 }
 .place-info-box-content {
-  padding: 5px 10px;
-  margin-left: 120px;
+  padding: 1px 1px;
+  margin-left: 20px;
 }
 .place-info-box-detail {
   display: block;
@@ -97,7 +96,7 @@ body {
   margin: 0;
 }
 
-/* Detail For restaurant */
+/* Detail For campanha */
 
 .box-img-detail {
     width: 180px;
@@ -109,10 +108,10 @@ body {
 }
 
 /*
- * Component: Menu Item
+ * Component: Menu Produto
  * -------------------
  */
-.menu-item-info-box {
+.produto-campanha-info-box {
   color: #555;
   display: block;
   min-height: 120px;
@@ -122,22 +121,22 @@ body {
   border-radius: 2px;
   margin-bottom: 15px;
 }
-.menu-item-info-box small {
+.produto-campanha-info-box small {
   font-size: 14px;
 }
-.menu-item-info-box .progress {
+.produto-campanha-info-box .progress {
   background: rgba(0, 0, 0, 0.2);
   margin: 5px -10px 5px -10px;
   height: 2px;
 }
-.menu-item-info-box .progress,
-.menu-item-info-box .progress .progress-bar {
+.produto-campanha-info-box .progress,
+.produto-campanha-info-box .progress .progress-bar {
   border-radius: 0;
 }
-.menu-item-info .progress .progress-bar {
+.produto-campanha-info .progress .progress-bar {
   background: #fff;
 }
-.menu-item-info-box-icon {
+.produto-campanha-info-box-icon {
   border-top-left-radius: 2px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
@@ -149,33 +148,33 @@ body {
   text-align: center;
   background: rgba(0, 0, 0, 0.2);
 }
-.menu-item-info-box-icon > img {
+.produto-campanha-info-box-icon > img {
   max-width: 100%;
   /*border-right: 1px solid rgba(0, 0, 0, 0.1);*/
 }
-.menu-item-info-box-price {
+.produto-campanha-info-box-price {
   font-weight: bold;
   margin-right: 20px;
   font-size: 16px;
 }
 
-.menu-item-info-box-content {
+.produto-campanha-info-box-content {
   padding: 5px 10px;
   margin-left: 120px;
 }
 
-.menu-item-info-box-content a {
+.produto-campanha-info-box-content a {
   cursor: pointer;
 }
 
-.menu-item-info-box-detail {
+.produto-campanha-info-box-detail {
   display: block;
   font-size: 14px;
   margin-bottom: 15px;
   width: 100%;
 }
 
-.menu-item-info-box-text {
+.produto-campanha-info-box-text {
   display: block;
   font-size: 18px;
   font-weight: bold;
@@ -186,10 +185,10 @@ body {
   text-transform: uppercase;
   width: 80%;
 }
-.menu-item-info-box-text {
+.produto-campanha-info-box-text {
 }
 
-.menu-item-info-box-more {
+.produto-campanha-info-box-more {
   display: block;
 }
 
@@ -262,7 +261,7 @@ body {
   color: #dd4b39;
 }
 
-/* Barra de busca de restaurantes */
+/* Barra de busca de campanhaes */
 
 .search-link {
     cursor: pointer;
@@ -277,3 +276,4 @@ body {
     opacity: 0;
     max-height: 0px;
 }
+

@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class DeliveryCostsComponent implements OnInit {
 
   @Input() delivery: number
-  @Input() itemsValue: number
+  @Input() produtosValue: number
 
   constructor() { }
 
@@ -15,7 +15,7 @@ export class DeliveryCostsComponent implements OnInit {
   }
 
   total(): number {
-    return this.delivery + this.itemsValue
+    return this.delivery + this.produtosValue
   }
 
 }

@@ -1,0 +1,122 @@
+<section class="content-header">
+</section>
+
+<section class="content">
+  <section class="invoice">
+
+    <form [formGroup]="registerForm" novalidate>
+      <div class="row">
+        <div class="col-xs-12">
+          <h2 class="page-header">
+            <i class="fa fa-shopping-cart"></i> Cadastro
+          </h2>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-9">
+          <p class="lead">Seus Dados:</p>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+          <span class="help-block pull-right has-error-block" *ngIf="registerForm.hasError('emailsNotMatch')"><i class="fa fa-remove"></i> Email-s não conferem</span>
+        </div>
+
+        <div class="col-sm-9 col-xs-12">
+          <mt-input-container errorMessage="Campo obrigatório e com 5 caracteres" label="Nome">
+            <input class="form-control" formControlName="nome" placeholder="Nome" autocomplete="off" >
+          </mt-input-container>
+        </div>
+
+        <div class="col-sm-3 col-xs-12">
+          <mt-input-container errorMessage="Campo obrigatório e com no mínimo 11 caracteres" label="cpfcnpj">
+            <input class="form-control" formControlName="cpfcnpj" placeholder="CPF / CNPJ" autocomplete="off" >
+          </mt-input-container>
+        </div>
+
+        <div class="col-sm-4 col-xs-4">
+          <mt-input-container errorMessage="Telefone inválido" label="E-mail">
+            <input type="text" class="form-control" formControlName="telefone" placeholder="Telefone" autocomplete="off">
+          </mt-input-container>
+        </div>
+
+
+        <div class="col-sm-4 col-xs-4">
+          <mt-input-container errorMessage="E-mail inválido" label="E-mail">
+            <input type="text" class="form-control" formControlName="email" placeholder="E-mail" autocomplete="off">
+          </mt-input-container>
+        </div>
+
+        <div class="col-sm-4 col-xs-4">
+          <mt-input-container errorMessage="E-mail inválido" label="E-mail">
+            <input type="text" class="form-control" formControlName="emailConfirmation" placeholder="Confirmação do e-mail" autocomplete="off">
+          </mt-input-container>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <p class="lead">Endereço:</p>
+        </div>
+        <div class="col-sm-6 col-xs-12">
+          <mt-input-container errorMessage="Campo obrigatório e com 5 caracteres" label="Endereço">
+            <input class="form-control" formControlName="endereco" placeholder="Endereço" autocomplete="off" >
+          </mt-input-container>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+          <mt-input-container errorMessage="" label="Número">
+            <input type="text" class="form-control" formControlName="numero" placeholder="Número" autocomplete="off">
+          </mt-input-container>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+          <mt-input-container>
+            <input type="text" class="form-control" formControlName="complemento" placeholder="Complemento">
+          </mt-input-container>
+        </div>
+        <div class="col-sm-3 col-xs-12">
+          <mt-input-container errorMessage="Campo obrigatório e com 3 caracteres" label="bairro">
+            <input class="form-control" formControlName="bairro" placeholder="Bairro" autocomplete="off" >
+          </mt-input-container>
+        </div>
+        <div class="col-sm-3 col-xs-12">
+          <mt-input-container errorMessage="Campo obrigatório e com 3 caracteres" label="cidade">
+            <input class="form-control" formControlName="cidade" placeholder="Cidade" autocomplete="off" >
+          </mt-input-container>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+          <mt-input-container errorMessage="Obrigatório e com 2 caracteres" label="uf">
+            <input type="text" class="form-control" formControlName="uf" placeholder="UF" autocomplete="off">
+          </mt-input-container>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+          <mt-input-container errorMessage="Obrigatório e somente números" label="Cep">
+            <input type="text" class="form-control" formControlName="cep" placeholder="Cep">
+          </mt-input-container>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-9">
+          <p class="lead">Senha:</p>
+        </div>
+        <div class="col-xs-12 col-sm-3" *ngIf="registerForm.value.password != registerForm.value.passwordConfirmation">
+          <span class="help-block pull-right has-error-block"><i class="fa fa-remove"></i> Senhas não conferem</span>
+       </div>
+        <div class="col-sm-6 col-xs-12">
+          <mt-input-container errorMessage="Campo obrigatório e com 6 caracteres" label="Senha">
+            <input type="password" class="form-control" formControlName="password" placeholder="Digite sua senha" autocomplete="off" >
+          </mt-input-container>
+        </div>
+        <div class="col-sm-6 col-xs-12">
+          <mt-input-container errorMessage="Campo obrigatório e com 6 caracteres" label="ConfirmacaoSenha">
+            <input type="password" class="form-control" formControlName="passwordConfirmation" placeholder="Confirme sua senha" autocomplete="off" >
+          </mt-input-container>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-4" > <!--- disabled="loginform.invalid" -->
+          <button type="submit" (click)="cadastrar()" class="btn btn-primary btn-block btn-flat">Cadastrar</button>
+        </div>
+      </div>
+    </form>
+  </section>
+</section>

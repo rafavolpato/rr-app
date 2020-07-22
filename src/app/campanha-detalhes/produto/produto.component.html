@@ -1,0 +1,20 @@
+<div class="produto-info-box" [@produtoAppeared]="produtoState">
+
+<!--  <span class="produto-campanha-info-box-icon">
+      <img [src]="produtoCampanha.?imagePath"></span>
+-->
+    <div class="produto-campanha-info-box-content col-sm-12" >
+      <th class="col-sm-8" id="produto">
+      <span class="produto-campanha-info-box-text">{{produto.nomeProduto}}</span>
+    </th>
+    <th class="col-sm-2" id="valor">
+      <span class="produto-campanha-info-box-price">{{produto.valor | currency: 'BRL': true}}</span>
+    </th>
+    <th class="col-sm-2" id="adicionar">
+      <span>
+        <a (click)="emitAddEvent()" class=""><i class="fa fa-plus-circle"></i> Adicionar</a>
+    </span>
+  </th>
+    </div>
+<!--  </span> -->
+</div>

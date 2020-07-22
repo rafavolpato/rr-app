@@ -1,0 +1,40 @@
+<!--INICIO DO CARRINHO-->
+<div class="box box-solid">
+  <div class="box-header">
+    <i class="fa fa-shopping-cart"></i>
+
+    <h3 class="box-title">Carrinho</h3>
+  </div>
+  <!-- /.box-header -->
+  <div class="box-body">
+
+    <div *ngIf="!produtos().length">
+      <p class="text-center">
+        Seu carrinho está vazio!
+      </p>
+    </div>
+    <div class="table-responsive" *ngIf="produtos().length">
+        <table class="table">
+          <tbody>
+          <tr *ngFor="let produto of produtos()" [@row]="rowState">
+            <th>({{produto.order.qtd}}x) {{produto.order.idProdutoCampanha.nomeProduto}}</th>
+            <td class="text-right">{{produto.value() | currency: 'BRL': true}}</td>
+            <td class="text-right">
+              <a (click)="removeProduto(produto)" class="btn btn-sm danger"><i class="fa fa-remove"></i></a>
+            </td>
+          </tr>
+          <tr>
+            <th>Total:</th>
+            <td class="text-right">{{total() | currency: 'BRL': true}}</td>
+          </tr>
+        </tbody></table>
+      </div>
+  </div>
+  <div class="box-footer" *ngIf="produtos().length">
+    <div class="pull-right">
+      <button (click)="clear()" type="button" class="btn btn-danger"><i class="fa fa-trash"></i> Limpar</button>
+      <a [routerLink]="['/order']" class="btn btn-success"><i class="fa fa-credit-card"></i> Fechar Pedido</a>
+    </div>
+  </div>
+</div>
+<!-- FIM DO CARRINHO -->

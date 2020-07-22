@@ -1,0 +1,11 @@
+<div class="navbar-custom-menu">
+  <ul class="nav navbar-nav">
+    <li class="user user-menu">
+      <span *ngIf="isLoggedIn()">
+        Olá {{this.getNome()}} !  | <a (click)="logout()">Sair</a>
+      </span>
+    </li>
+    <li *ngIf="!isLoggedIn()" routerLinkActive="active"><a [routerLink]="['/login']">Entrar</a></li>
+    <li *ngIf="!isLoggedIn()" routerLinkActive="active"><a [routerLink]="['/register']">Cadastrar</a></li>
+  </ul>
+</div>
