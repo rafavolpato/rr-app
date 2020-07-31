@@ -17,7 +17,7 @@
         <table class="table">
           <tbody>
           <tr *ngFor="let produto of produtos()" [@row]="rowState">
-            <th>({{produto.order.qtd}}x) {{produto.order.idProdutoCampanha.nomeProduto}}</th>
+            <th>({{produto.orderItems.qtd}}x) {{produto.orderItems.idProdutoCampanha.nomeProduto}}</th>
             <td class="text-right">{{produto.value() | currency: 'BRL': true}}</td>
             <td class="text-right">
               <a (click)="removeProduto(produto)" class="btn btn-sm danger"><i class="fa fa-remove"></i></a>

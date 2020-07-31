@@ -15,6 +15,8 @@ import {NotificationService} from './messages/notification.service'
 import { LoginService } from 'app/security/login/login.service'
 import { LoggedInGuard } from 'app/security/loggedin.guard'
 import { RegisterService } from 'app/security/register/register.service'
+import { MyordersService } from 'app/myorders/myorders.service'
+import { DataService } from 'app/shared/data/data.service'
 
 
 @NgModule({
@@ -35,7 +37,9 @@ export class SharedModule {
         NotificationService,
         LoginService,
         LoggedInGuard,
-        RegisterService]
+        RegisterService,
+        MyordersService,
+        DataService]
     }
   }
 }

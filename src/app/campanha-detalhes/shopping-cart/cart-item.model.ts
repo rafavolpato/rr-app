@@ -1,10 +1,11 @@
-import { Order } from 'app/order/order.model'
+import { OrderItems } from 'app/order/order-items/order-items.model'
+
 
 
 export class CartItem {
-  constructor(public order: Order){}
+  constructor(public orderItems: OrderItems){}
 
   value(): number {
-    return this.order.valor * this.order.qtd
+    return this.orderItems.valor * this.orderItems.qtd
   }
 }

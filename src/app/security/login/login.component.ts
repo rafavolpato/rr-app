@@ -39,7 +39,11 @@ export class LoginComponent implements OnInit {
     .subscribe(
       token => {this.buscarPessoa()},
       response => {
-        this.notificationService.notify('Erro ao fazer o Login!')
+        if (response.status === 401) {
+          this.notificationService.notify('Usuário não cadastrado!')
+        }else{
+          this.notificationService.notify('Erro ao fazer o Login!')
+        }
         this.loginService.token = undefined
         this.loginService.pessoa = undefined})
   }
@@ -50,6 +54,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         pessoa => {this.notificationService.notify(`Bem vindo(a)! ${pessoa[0].nome}`)
                   //this.router.navigate([atob(this.navigationTo)])
+                  console.log(this.location)
                   this.location.back();
                   this.atualizarCarrinho()
         },
@@ -67,10 +72,13 @@ export class LoginComponent implements OnInit {
       .subscribe(
         carrinho => {
           this.shoppingCartService.carrinho = []
-          console.log(carrinho)
-          carrinho.map(item =>
+          this.shoppingCartService.order = undefined
+          carrinho.forEach(item =>
             this.shoppingCartService.carrinho.push(new CartItem(item))
           )
+          if (carrinho[0] !== undefined) {
+            this.shoppingCartService.order = carrinho[0].idCompra
+          }
         }
       )
     }

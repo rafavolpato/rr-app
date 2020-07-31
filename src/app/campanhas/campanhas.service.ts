@@ -4,6 +4,7 @@ import {HttpClient, HttpParams} from '@angular/common/http'
 import {Observable} from 'rxjs/Observable'
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/catch'
+import { Subject } from 'rxjs/Subject';
 
 import {Campanha} from './campanha/campanha.model'
 import {ProdutoCampanha} from '../campanha-detalhes/produto/produto-campanha.model'
@@ -27,9 +28,12 @@ export class CampanhasService {
 
     }
 
-    produtosCampanha(id: string): Observable<ProdutoCampanha[]>{
+    produtosCampanha(id: string, search?: string): Observable<ProdutoCampanha[]>{
       let params: HttpParams = undefined
       params = new HttpParams().append('idCampanha', id)
+      if ((search !== null) && (search !== undefined)){
+        params = new HttpParams().append('q', search)
+      }
       return this.http.get<ProdutoCampanha[]>(`${MEAT_API}produtoCampanha/`, {params: params})
 
     }
@@ -41,6 +45,16 @@ export class CampanhasService {
 
     menuOfCampanha(id: string): Observable<ProdutoCampanha[]>{
       return this.http.get<ProdutoCampanha[]>(`${MEAT_API}/campanhas/${id}/menu`)
+    }
+
+    private produtoCampanhaSubject = new Subject<ProdutoCampanha[]>();
+
+    getProdutoCampanha(): Observable<ProdutoCampanha[]> {
+      return this.produtoCampanhaSubject.asObservable();
+    }
+
+    updateProdutoCampanha(message: ProdutoCampanha[]) {
+      this.produtoCampanhaSubject.next(message);
     }
 
 }

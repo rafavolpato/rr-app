@@ -19,10 +19,10 @@
     <tr *ngFor="let cartItem of cartItems">
       <td class="text-center">
         <a (click)="emitDecreaseQty(cartItem)" class="btn btn-sm"><i class="fa fa-minus"></i></a>
-        {{cartItem.order.qtd}}
+        {{cartItem.orderItems.qtd}}
         <a (click)="emitIncreaseQty(cartItem)" class="btn btn-sm"><i class="fa fa-plus"></i></a>
       </td>
-      <td>{{cartItem.order.idProdutoCampanha.nomeProduto}}</td>
+      <td>{{cartItem.orderItems.idProdutoCampanha.nomeProduto}}</td>
 
 <!--      <td>{{cartItem.order.idProdutoCampanha.nomeProduto}}</td> -->
       <td class="text-right">{{cartItem.value() | currency: 'BRL': true}}</td>

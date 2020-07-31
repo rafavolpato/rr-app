@@ -10,6 +10,7 @@ import {NotFoundComponent} from './not-found/not-found.component'
 import {LoginComponent} from "./security/login/login.component"
 import { LoggedInGuard } from './security/loggedin.guard'
 import { RegisterComponent } from './security/register/register.component'
+import { MyordersComponent } from './myorders/myorders.component'
 
 export const ROUTES: Routes = [
   {path: '', component: HomeComponent},
@@ -25,6 +26,7 @@ export const ROUTES: Routes = [
   {path: 'order', loadChildren: './order/order.module#OrderModule',
     canLoad: [LoggedInGuard], canActivate: [LoggedInGuard]},
   {path: 'order-summary', component: OrderSummaryComponent},
+  {path: 'myorders', component: MyordersComponent},
   {path: 'about', loadChildren: './about/about.module#AboutModule'},
   {path: '**', component: NotFoundComponent}
 ]

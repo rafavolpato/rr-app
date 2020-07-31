@@ -48,9 +48,8 @@ export class LoginService {
       headers = headers
       .set('authorization', `Bearer ${this.token.access}`)
       let params = new HttpParams().append('email', email)
-      console.log(this.token.access)
-      return this.http.get<Pessoa[]>(`${MEAT_API}pessoaByEmail/`,
-      {params: params, headers:headers})
+      return this.http.get<Pessoa[]>(`${MEAT_API}pessoa/`,
+      {headers:headers})
       .do(pessoa => this.pessoa = pessoa[0])
     }
 

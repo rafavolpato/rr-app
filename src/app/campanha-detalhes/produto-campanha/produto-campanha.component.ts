@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {ActivatedRoute} from '@angular/router'
 import {CampanhasService} from '../../campanhas/campanhas.service'
 import {ProdutoCampanha} from '../produto/produto-campanha.model'
 
 import {Observable} from 'rxjs/Observable'
+
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'mt-produtoCampanha',
@@ -12,18 +14,21 @@ import {Observable} from 'rxjs/Observable'
 
 export class ProdutoCampanhaComponent implements OnInit {
 
-  produtoCampanha: Observable<ProdutoCampanha[]>
+  produtoCampanha: ProdutoCampanha[]
+  subscription: Subscription
 
   constructor(private campanhasService: CampanhasService,
-              private route: ActivatedRoute) { }
-
-  ngOnInit() {
-    this.produtoCampanha = this.campanhasService
-      .produtosCampanha(this.route.parent.snapshot.params['id'])
+              private route: ActivatedRoute)
+  {
+    this.subscription = campanhasService.getProdutoCampanha()
+    .subscribe(mymessage =>  this.produtoCampanha = mymessage)
   }
 
-//  addProdutoCampanha(produto: ProdutoCampanha){
-//    console.log('add produto')
-//    console.log(produto)
-//  }
+  ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
 }

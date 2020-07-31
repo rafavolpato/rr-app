@@ -1,54 +1,68 @@
-<!-- INÍCIO DO CONTEÚDO -->
-      <section class="content-header">
-        <h1>
+<section class="content-header">
+  <h1>
 
-        </h1>
-      </section>
+  </h1>
+</section>
 
 
-      <section class="content">
+<section class="content">
 
-        <div class="row">
-            <div class="col-xs-12">
-              <div class="box box-solid">
-                <div class="box-header with-border">
-                  <i class="fa fa-home"></i>
+  <div class="row">
+      <div class="col-xs-12">
+        <div class="box box-solid">
+          <div class="box-header with-border">
+            <i class="fa fa-home"></i>
 
-                  <h3 class="box-title">{{campanha?.nome}}</h3><span class="pull-right"><i class="fa fa-star"></i> {{campanha?.rating}}</span>
+            <h3 class="box-title">{{campanha?.nome}}</h3><span class="pull-right">{{campanha?.rating}}</span>
+              <a (click)="toggleSearch()" class="search-link pull-right">
+                <span *ngIf="iptSearch.value"><small>"{{iptSearch.value}}"</small></span> <i class="fa fa-search"></i>
+              </a>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 search-bar" [@toggleSearch]="searchBarState">
+              <form [formGroup]="searchForm">
+                <div class="form-group">
+                    <input type="text" #iptSearch formControlName="searchControl"
+                          class="form-control" placeholder="O que você está procurando?">
                 </div>
-                <!-- /.box-header
-                <div class="box-body">
-                  <div class="col-sm-3 col-xs-12" *ngIf="campanha">
-                    <img class="box-img-detail" [src]="campanha?.imagePath" />
-                  </div>
-
-                  <dl class="col-sm-9 col-xs-12">
-                    <dt>Categoria</dt>
-                    <dd>{{campanha?.category}}</dd>
-                    <dt>Quem somos</dt>
-                    <dd>{{campanha?.about}}</dd>
-                    <dt>Horários</dt>
-                    <dd>{{campanha?.hours}}</dd>
-                  </dl>
-                </div>-->
-                <!-- /.box-body -->
-                <div class="box-footer detail-footer">
-                <a class="pull-left" routerLinkActive="detail-active" [routerLink]="['menu']">
-                   Menu
-                </a>
-                <a class="pull-right" routerLinkActive="detail-active" [routerLink]="['reviews']">
-                   Avaliações
-                </a>
-              </div>
-              </div>
+              </form>
             </div>
-            <!-- /.col-xs-12 -->
+          </div>
 
+          <!-- /.box-header
+          <div class="box-body">
+            <div class="col-sm-3 col-xs-12" *ngIf="campanha">
+              <img class="box-img-detail" [src]="campanha?.imagePath" />
+            </div>
+
+            <dl class="col-sm-9 col-xs-12">
+              <dt>Categoria</dt>
+              <dd>{{campanha?.category}}</dd>
+              <dt>Quem somos</dt>
+              <dd>{{campanha?.about}}</dd>
+              <dt>Horários</dt>
+              <dd>{{campanha?.hours}}</dd>
+            </dl>
+          </div>-->
+          <!-- /.box-body
+          <!--
+          <div class="box-footer detail-footer">
+          <a class="pull-left" routerLinkActive="detail-active" [routerLink]="['menu']">
+              Menu
+          </a>
+          <a class="pull-right" routerLinkActive="detail-active" [routerLink]="['reviews']">
+              Avaliações
+          </a>
+        </div> -->
         </div>
+      </div>
+      <!-- /.col-xs-12 -->
 
-        <div class="row">
-            <router-outlet></router-outlet>
-        </div>
+  </div>
 
-      </section>
-      <!-- FIM DO CONTEÚDO -->
+  <div class="row">
+      <router-outlet></router-outlet>
+  </div>
+
+</section>

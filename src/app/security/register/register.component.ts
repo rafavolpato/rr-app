@@ -8,7 +8,6 @@ import {Register} from './register.model'
 import {RegisterService} from './register.service';
 import { NotificationService } from 'app/shared/messages/notification.service';
 
-
 @Component({
   selector: 'mt-register',
   templateUrl: './register.component.html',
@@ -106,10 +105,9 @@ export class RegisterComponent implements OnInit {
       this.registerService.cadastrar(register)
         .subscribe(
           () => {this.notificationService.notify('Cadastro realizado com sucesso!')
-                 this.router.navigate(['/login'])},
+          this.router.navigate(['/login'])},
           response => {
-            console.log(response)
-            let msg = response.error = null ? ' ' : response.error
+            let msg = ((response.error === null) || (response.error === undefined)) ? ' ' : response.error
             this.notificationService.notify(msg
              + '(' + response.status + ':' + response.statusText + ')');
             })
