@@ -1,9 +1,8 @@
 <section class="content-header">
   <h1>
-
+    Campanhas
   </h1>
 </section>
-
 
 <section class="content">
 
@@ -13,7 +12,7 @@
           <div class="box-header with-border">
             <i class="fa fa-home"></i>
 
-            <h3 class="box-title">{{campanha?.nome}}</h3><span class="pull-right">{{campanha?.rating}}</span>
+            <h3 class="box-title">{{campanha?.nome}}</h3><span class="pull-right"></span>
               <a (click)="toggleSearch()" class="search-link pull-right">
                 <span *ngIf="iptSearch.value"><small>"{{iptSearch.value}}"</small></span> <i class="fa fa-search"></i>
               </a>
@@ -29,36 +28,8 @@
               </form>
             </div>
           </div>
-
-          <!-- /.box-header
-          <div class="box-body">
-            <div class="col-sm-3 col-xs-12" *ngIf="campanha">
-              <img class="box-img-detail" [src]="campanha?.imagePath" />
-            </div>
-
-            <dl class="col-sm-9 col-xs-12">
-              <dt>Categoria</dt>
-              <dd>{{campanha?.category}}</dd>
-              <dt>Quem somos</dt>
-              <dd>{{campanha?.about}}</dd>
-              <dt>Horários</dt>
-              <dd>{{campanha?.hours}}</dd>
-            </dl>
-          </div>-->
-          <!-- /.box-body
-          <!--
-          <div class="box-footer detail-footer">
-          <a class="pull-left" routerLinkActive="detail-active" [routerLink]="['menu']">
-              Menu
-          </a>
-          <a class="pull-right" routerLinkActive="detail-active" [routerLink]="['reviews']">
-              Avaliações
-          </a>
-        </div> -->
         </div>
       </div>
-      <!-- /.col-xs-12 -->
-
   </div>
 
   <div class="row">

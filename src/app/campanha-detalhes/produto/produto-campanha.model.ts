@@ -5,6 +5,7 @@ export interface ProdutoCampanha {
   idCampanha: Campanha
   codProduto: number
   nomeProduto: string
+  fotoProduto: string
   valor: number
   url: string
 }

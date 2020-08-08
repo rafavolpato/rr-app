@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {ActivatedRoute} from '@angular/router'
 import {trigger, state, style, transition, animate} from '@angular/animations'
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms'
@@ -61,6 +61,9 @@ export class CampanhaDetalhesComponent implements OnInit {
 
           this.campanhasService.produtosCampanha(this.route.snapshot.params['id'])
           .subscribe(produtoCampanha => this.campanhasService.updateProdutoCampanha(produtoCampanha))
+
+      this.campanhasService.campanha(this.route.snapshot.params['id'])
+      .subscribe(res => this.campanha = res)
 
     }
 

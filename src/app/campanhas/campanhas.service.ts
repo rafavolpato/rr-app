@@ -9,8 +9,10 @@ import { Subject } from 'rxjs/Subject';
 import {Campanha} from './campanha/campanha.model'
 import {ProdutoCampanha} from '../campanha-detalhes/produto/produto-campanha.model'
 
+
 import {MEAT_API} from '../app.api'
 import {ErrorHandler} from '../app.error-handler'
+import { Page } from 'app/shared/page/page.model'
 
 @Injectable()
 export class CampanhasService {
@@ -28,13 +30,13 @@ export class CampanhasService {
 
     }
 
-    produtosCampanha(id: string, search?: string): Observable<ProdutoCampanha[]>{
+    produtosCampanha(id: string, search?: string): Observable<Page>{
       let params: HttpParams = undefined
       params = new HttpParams().append('idCampanha', id)
       if ((search !== null) && (search !== undefined)){
         params = new HttpParams().append('q', search)
       }
-      return this.http.get<ProdutoCampanha[]>(`${MEAT_API}produtoCampanha/`, {params: params})
+      return this.http.get<Page>(`${MEAT_API}produtoCampanha/`, {params: params})
 
     }
 
@@ -43,17 +45,14 @@ export class CampanhasService {
 //        .map(response => response.json())
     }
 
-    menuOfCampanha(id: string): Observable<ProdutoCampanha[]>{
-      return this.http.get<ProdutoCampanha[]>(`${MEAT_API}/campanhas/${id}/menu`)
-    }
 
-    private produtoCampanhaSubject = new Subject<ProdutoCampanha[]>();
+    private produtoCampanhaSubject = new Subject<Page>();
 
-    getProdutoCampanha(): Observable<ProdutoCampanha[]> {
+    getProdutoCampanha(): Observable<Page> {
       return this.produtoCampanhaSubject.asObservable();
     }
 
-    updateProdutoCampanha(message: ProdutoCampanha[]) {
+    updateProdutoCampanha(message: Page) {
       this.produtoCampanhaSubject.next(message);
     }
 
