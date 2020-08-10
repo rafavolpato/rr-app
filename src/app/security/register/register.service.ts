@@ -11,7 +11,6 @@ import 'rxjs/add/operator/filter'
 import {MEAT_API} from '../../app.api'
 import {ErrorHandler} from '../../app.error-handler'
 import {Register}  from './register.model'
-import { Console } from '@angular/core/src/console'
 
 export class Token {
   access: string

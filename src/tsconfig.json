@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "downlevelIteration": true,
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
@@ -10,16 +11,19 @@
       "dom"
     ],
     "outDir": "../out-tsc/app",
-    "target": "es5",
-    "module": "es2015",
+    "target": "es2015",
+    "module": "es2020",
     "baseUrl": "",
     "types": [],
     "typeRoots": [
       "../node_modules/@types"
     ]
   },
-  "exclude": [
-    "test.ts",
-    "**/*.spec.ts"
+  "files": [
+    "main.ts",
+    "polyfills.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts"
   ]
 }

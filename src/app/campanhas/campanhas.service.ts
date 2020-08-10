@@ -7,7 +7,7 @@ import 'rxjs/add/operator/catch'
 import { Subject } from 'rxjs/Subject';
 
 import {Campanha} from './campanha/campanha.model'
-import {ProdutoCampanha} from '../campanha-detalhes/produto/produto-campanha.model'
+import {ProdutoCampanha} from '../campanha-detalhes/produto-campanha/produto-campanha.model'
 
 
 import {MEAT_API} from '../app.api'

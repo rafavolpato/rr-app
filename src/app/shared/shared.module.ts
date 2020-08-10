@@ -18,6 +18,12 @@ import { RegisterService } from 'app/security/register/register.service'
 import { MyordersService } from 'app/myorders/myorders.service'
 import { DataService } from 'app/shared/data/data.service'
 
+declare module "@angular/core" {
+  interface ModuleWithProviders<T = any> {
+      ngModule: Type<T>;
+      providers?: Provider[];
+  }
+}
 
 @NgModule({
   declarations: [InputComponent, RadioComponent, RatingComponent, SnackbarComponent],

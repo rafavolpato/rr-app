@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {ActivatedRoute} from '@angular/router'
 import {CampanhasService} from '../../campanhas/campanhas.service'
-import {ProdutoCampanha} from '../produto/produto-campanha.model'
+import {ProdutoCampanha} from './produto-campanha.model'
 
 import {Observable} from 'rxjs/Observable'
 

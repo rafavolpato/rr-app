@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import {trigger, state, style, transition, animate} from '@angular/animations'
 
-import {ProdutoCampanha} from "./produto-campanha.model"
+import {ProdutoCampanha} from "../produto-campanha/produto-campanha.model"
 
 @Component({
   selector: 'mt-produto',

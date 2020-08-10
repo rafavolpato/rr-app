@@ -1,7 +1,5 @@
 import { OrderItems } from 'app/order/order-items/order-items.model'
 
-
-
 export class CartItem {
   constructor(public orderItems: OrderItems){}
 

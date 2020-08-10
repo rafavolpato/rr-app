@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService, Token } from './login.service';
 import { NotificationService } from 'app/shared/messages/notification.service';
 import { ShoppingCartService } from 'app/campanha-detalhes/shopping-cart/shopping-cart.service';
-import { forEach } from '@angular/router/src/utils/collection';
 import { CartItem } from 'app/campanha-detalhes/shopping-cart/cart-item.model';
 import { Location } from '@angular/common';
 

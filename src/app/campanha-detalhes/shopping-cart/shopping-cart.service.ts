@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core'
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http'
 import {CartItem} from './cart-item.model'
-import {ProdutoCampanha} from '../produto/produto-campanha.model'
+import {ProdutoCampanha} from '../produto-campanha/produto-campanha.model'
 
 import {NotificationService} from '../../shared/messages/notification.service'
 import { LoginService } from 'app/security/login/login.service'
@@ -23,9 +23,9 @@ export class ShoppingCartService {
     private router: Router,
     private http: HttpClient,
     private dataService: DataService
-    ){}
+    ) {}
 
-  clear(){
+  clear() {
     this.carrinho = []
     this.order = undefined
   }
@@ -43,22 +43,22 @@ export class ShoppingCartService {
 
     this.order.idPessoa = this.loginService.pessoa
 
-    let orderItems = new OrderItems (
-      foundProduto === undefined ? 0 : foundProduto.orderItems.idItemCompra,
-      this.order,
-      produto,
-      foundProduto ? foundProduto.orderItems.qtd + 1 : 1,
-      produto.valor
-    )
+    let orderItems: OrderItems = {
+      idItemCompra: foundProduto === undefined ? 0 : foundProduto.orderItems.idItemCompra,
+      idCompra: this.order,
+      idProdutoCampanha: produto,
+      qtd: foundProduto ? foundProduto.orderItems.qtd + 1 : 1,
+      valor: produto.valor
+    }
 
     this.postProduto(orderItems, foundProduto !== undefined)
       .subscribe(
       orderAdded => {
         this.order = orderAdded.idCompra
         orderItems.idItemCompra = orderAdded.idItemCompra
-        if(foundProduto){
+        if (foundProduto) {
           foundProduto.orderItems.qtd = foundProduto.orderItems.qtd + 1
-        }else{
+        } else {
           this.carrinho.push(new CartItem(orderAdded))
         }
       },
@@ -69,14 +69,14 @@ export class ShoppingCartService {
       });
   }
 
-  procuraProduto(produto:ProdutoCampanha): CartItem {
+  procuraProduto(produto: ProdutoCampanha): CartItem {
 
-    if (!this.loginService.isLoggedIn || this.loginService.pessoa === undefined){
+    if (!this.loginService.isLoggedIn || this.loginService.pessoa === undefined) {
       this.router.navigate(['/login'])
       return
     }
 
-    let foundProduto = this.carrinho.find((mProduto)=>
+    let foundProduto = this.carrinho.find((mProduto) =>
     mProduto.orderItems.idProdutoCampanha.idProdutoCampanha === produto.idProdutoCampanha)
     return foundProduto
   }
@@ -88,30 +88,31 @@ export class ShoppingCartService {
       .set('Authorization', `Bearer ${this.loginService.token.access}`)
     }
     if (!found) {
-      return this.http.post<OrderItems>(`${MEAT_API}itemCompra/`, orderItems, {headers:headers})
-    }else{
+      return this.http.post<OrderItems>(`${MEAT_API}itemCompra/`, orderItems, {headers: headers})
+    } else {
       return this.http.put<OrderItems>(`${MEAT_API}itemCompra/${orderItems.idItemCompra}/`,
-      orderItems, {headers:headers})
+      orderItems, {headers: headers})
     }
   }
 
-  increaseQty(produto: CartItem){
+  increaseQty(produto: CartItem) {
     this.addProduto(produto.orderItems.idProdutoCampanha)
   }
 
-  decreaseQty(produto: CartItem){
+  decreaseQty(produto: CartItem) {
     let foundProduto = this.procuraProduto(produto.orderItems.idProdutoCampanha)
 
-    let orderPost = new OrderItemsPost (
-      foundProduto ? foundProduto.orderItems.idItemCompra : 0,
-      0, //idCompra
-      produto.orderItems.idProdutoCampanha.idProdutoCampanha,
-      foundProduto.orderItems.qtd - 1,
-      produto.orderItems.valor)
+    let orderPost: OrderItemsPost = {
+      idItemCompra: foundProduto ? foundProduto.orderItems.idItemCompra : 0,
+      idCompra: 0,
+      idProdutoCampanha: produto.orderItems.idProdutoCampanha.idProdutoCampanha,
+      qtd: foundProduto.orderItems.qtd - 1,
+      valor: produto.orderItems.valor
+    }
 
-    if (produto.orderItems.qtd === 1){
+    if (produto.orderItems.qtd === 1) {
       this.removeProduto(produto)
-    }else{
+    } else {
       this.postProduto(produto.orderItems, true)
       .subscribe(
       orderAdded => {},
@@ -124,7 +125,7 @@ export class ShoppingCartService {
     }
   }
 
-  removeProduto(produto:CartItem){
+  removeProduto(produto: CartItem) {
     this.deleteProduto(produto.orderItems)
       .subscribe(
       ok => {},
@@ -137,19 +138,19 @@ export class ShoppingCartService {
 //    this.notificationService.notify(`Você removeu o produto ${produto.order.produtoCampanha.nomeProduto}`)
   }
 
-  deleteProduto (order: OrderItems): Observable<any>{
+  deleteProduto (order: OrderItems): Observable<any> {
     let headers = new HttpHeaders()
     if (this.loginService.isLoggedIn()) {
       headers = headers
       .set('Authorization', `Bearer ${this.loginService.token.access}`)
     }
-    return this.http.delete<OrderItems>(`${MEAT_API}itemCompra/${order.idItemCompra}/`, {headers:headers})
+    return this.http.delete<OrderItems>(`${MEAT_API}itemCompra/${order.idItemCompra}/`, {headers: headers})
   }
 
-  total(): number{
+  total(): number {
     return this.carrinho
       .map(produto => produto.value())
-      .reduce((prev, value)=> prev+value, 0)
+      .reduce((prev, value) => prev + value, 0)
   }
 
   limparCarrinho() {
@@ -169,7 +170,7 @@ export class ShoppingCartService {
       }
   }
 
-  deleteCarrinho (): Observable<any>{
+  deleteCarrinho (): Observable<any> {
     let headers = new HttpHeaders()
     if (this.loginService.isLoggedIn()) {
       headers = headers
@@ -179,7 +180,7 @@ export class ShoppingCartService {
      {headers: headers})
   }
 
-  atualizarCarrinho (): Observable<OrderItems[]>{
+  atualizarCarrinho (): Observable<OrderItems[]> {
     let headers = new HttpHeaders()
     if (this.loginService.isLoggedIn()) {
       headers = headers
