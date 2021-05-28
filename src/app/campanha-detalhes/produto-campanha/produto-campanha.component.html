@@ -5,16 +5,10 @@
     [produto]="produto" (add)="shoppingCart.addProduto($event)" >
   </mt-produto>
   </div>
-  <div class="paginaco" *ngIf="page?.count > 1">
+  <div class="paginacao" *ngIf="page?.next !== null">
     <div class="page-buttons">
-      <button class="btn prev" (click)="fetchPrevious()">
-        Próxima Página
-      </button>
-      <button *ngFor="let number of numbers; index as i" calss="btn pag">
-        {{i + 1}}
-      </button>
-      <button class="btn next" (click)="fetchNext()">
-        Página Anterior
+      <button (click)="next()" calss="btn pag">
+        Mais Itens
       </button>
     </div>
   </div>

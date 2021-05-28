@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { CartItem } from '../../campanha-detalhes/shopping-cart/cart-item.model'
 
+
 @Component({
   selector: 'mt-order-items',
   templateUrl: './order-items.component.html'

@@ -1,1 +1,28 @@
-<p>myorders works!</p>
+<section class="content-header">
+</section>
+
+<section class="content">
+  <section class="invoice">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2 class="page-header">
+          <i class="fa fa-shopping-cart"></i> Pedidos
+        </h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <p class="lead">Itens do Pedido:</p>
+      </div>
+      <tr *ngFor="let order of orders; let i = index">
+        <a (click)="showOrder(i)">
+          <td class="text-center">{{order.data}}</td>
+          <div *ngIf="orderLoaded[i]">
+            <mt-myorder-items [order]="order" [show]="orderShowed[i]"></mt-myorder-items>
+          </div>
+        </a>
+      </tr>
+    </div>
+  </section>
+</section>

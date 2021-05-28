@@ -1,1 +1,25 @@
-<p>myorder-items works!</p>
+<table class="table" *ngIf=show>
+  <thead>
+    <tr>
+      <th> Descrição</th>
+      <th> Quantidade</th>
+      <th> Valor</th>
+      <th> Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let itemCompra of itensCompra">
+      <td> {{itemCompra.idProdutoCampanha.nomeProduto}}</td>
+      <td class="text-right">({{itemCompra.qtd}}x)</td>
+      <td class="text-right">{{itemCompra.valor | currency: 'BRL': true}}</td>
+      <td class="text-right">{{itemCompra.qtd * itemCompra.valor | currency: 'BRL': true}}</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th>Total:</th>
+      <th></th><th></th>
+      <th class="text-right">{{total() | currency: 'BRL': true}}</th>
+    </tr>
+</tfoot>
+</table>

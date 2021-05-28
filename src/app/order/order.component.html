@@ -1,65 +1,63 @@
-<!--INICIO DO CONTEUDO-->
-      <section class="content-header">
-      </section>
+<section class="content-header">
+</section>
 
-      <section class="content">
-        <section class="invoice">
+<section class="content">
+  <section class="invoice">
 
-              <form [formGroup]="orderForm" novalidate>
-                <div class="row">
-                  <div class="col-xs-12">
-                    <h2 class="page-header">
-                      <i class="fa fa-shopping-cart"></i> Finalize o seu pedido
-                    </h2>
-                  </div>
+        <form [formGroup]="orderForm" novalidate>
+          <div class="row">
+            <div class="col-xs-12">
+              <h2 class="page-header">
+                <i class="fa fa-shopping-cart"></i> Finalize o seu pedido
+              </h2>
+            </div>
+          </div>
+
+          <!-- Table row -->
+          <div class="row">
+            <div class="col-xs-12">
+              <p class="lead">Itens do Pedido:</p>
+            </div>
+
+            <mt-order-items [cartItems]="cartItems()"
+                  (increaseQty)="increaseQty($event)"
+                  (decreaseQty)="decreaseQty($event)"
+                  (remove)="remove($event)"></mt-order-items>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+
+          <div class="row">
+            <!-- accepted payments column -->
+            <div class="col-sm-6 col-xs-12">
+              <p class="lead">Formas de Pagamento:</p>
+
+                <div class="form-group">
+                    <mt-radio [options]="paymentOptions" formControlName="paymentOption"></mt-radio>
                 </div>
 
-                <!-- Table row -->
-                <div class="row">
-                  <div class="col-xs-12">
-                    <p class="lead">Itens do Pedido:</p>
-                  </div>
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-6 col-xs-12">
+              <p class="lead">Frete e Total:</p>
 
-                  <mt-order-items [cartItems]="cartItems()"
-                        (increaseQty)="increaseQty($event)"
-                        (decreaseQty)="decreaseQty($event)"
-                        (remove)="remove($event)"></mt-order-items>
-                  <!-- /.col -->
-                </div>
-                <!-- /.row -->
+              <mt-delivery-costs
+                [delivery]="delivery"
+                [produtosValue]="cartItemsValue()"></mt-delivery-costs>
+            </div>
+            <!-- /.col -->
+          </div>
 
-                <div class="row">
-                  <!-- accepted payments column -->
-                  <div class="col-sm-6 col-xs-12">
-                    <p class="lead">Formas de Pagamento:</p>
+        </form>
 
-                      <div class="form-group">
-                         <mt-radio [options]="paymentOptions" formControlName="paymentOption"></mt-radio>
-                      </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <button (click)="checkOrder(cartItems())" class="btn btn-success pull-right"
+              [disabled]="!orderForm.valid || cartItems().length === 0">
+                <i class="fa fa-credit-card"></i> Concluir Pedido
+            </button>
+          </div>
+        </div>
 
-                  </div>
-                  <!-- /.col -->
-                  <div class="col-sm-6 col-xs-12">
-                    <p class="lead">Frete e Total:</p>
-
-                    <mt-delivery-costs
-                      [delivery]="delivery"
-                      [produtosValue]="cartItemsValue()"></mt-delivery-costs>
-                  </div>
-                  <!-- /.col -->
-                </div>
-
-              </form>
-
-              <div class="row">
-                <div class="col-xs-12">
-                  <button (click)="checkOrder(cartItems())" class="btn btn-success pull-right"
-                    [disabled]="!orderForm.valid || cartItems().length === 0">
-                      <i class="fa fa-credit-card"></i> Concluir Pedido
-                  </button>
-                </div>
-              </div>
-
-          </section>
-      </section>
-      <!-- FIM DO CONTEUDO-->
+    </section>
+</section>

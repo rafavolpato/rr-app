@@ -105,7 +105,7 @@ export class RegisterComponent implements OnInit {
       this.registerService.cadastrar(register)
         .subscribe(
           () => {this.notificationService.notify('Cadastro realizado com sucesso!')
-          this.router.navigate(['/login'])},
+                this.router.navigate(['/login'])},
           response => {
             let msg = ((response.error === null) || (response.error === undefined)) ? ' ' : response.error
             this.notificationService.notify(msg

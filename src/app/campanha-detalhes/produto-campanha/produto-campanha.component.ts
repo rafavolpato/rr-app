@@ -7,6 +7,7 @@ import {Observable} from 'rxjs/Observable'
 
 import { Subscription } from 'rxjs/Subscription';
 import { Page } from 'app/shared/page/page.model';
+import { PageService } from '../../shared/page/page.service';
 
 @Component({
   selector: 'mt-produtoCampanha',
@@ -18,15 +19,14 @@ export class ProdutoCampanhaComponent implements OnInit {
   produtoCampanha: ProdutoCampanha[]
   page: Page
   subscription: Subscription
-  numbers: number[]
 
   constructor(private campanhasService: CampanhasService,
+              private pageService: PageService,
               private route: ActivatedRoute)
   {
     this.subscription = campanhasService.getProdutoCampanha()
     .subscribe(mymessage => { this.page = mymessage
-      this.produtoCampanha = this.page.results
-      this.numbers = Array(this.page.count  ).fill(0).map((x,i)=>i);
+      this.produtoCampanha = this.page.results;
       }
     )
   }
@@ -38,14 +38,13 @@ export class ProdutoCampanhaComponent implements OnInit {
     this.subscription.unsubscribe();
   }
 
-  fetchNext() {
-
+  next() {
+    this.pageService.nextpage(this.page)
+      .subscribe(page => {
+        console.log(page)
+        this.produtoCampanha.push(...page.results)
+        this.page = page
+      })
   }
-
-  // function fetches the previous paginated items by using the url in the previous property
-  fetchPrevious() {
-
-  }
-
 
 }

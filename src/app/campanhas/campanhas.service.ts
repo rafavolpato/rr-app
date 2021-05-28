@@ -45,7 +45,6 @@ export class CampanhasService {
 //        .map(response => response.json())
     }
 
-
     private produtoCampanhaSubject = new Subject<Page>();
 
     getProdutoCampanha(): Observable<Page> {

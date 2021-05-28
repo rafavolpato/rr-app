@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
+
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
@@ -27,6 +28,10 @@ import { UserDetailComponent } from './header/user-detail/user-detail.component'
 import { RegisterComponent } from './security/register/register.component';
 import { MyordersComponent } from './myorders/myorders.component';
 import { MyorderItemsComponent } from './myorders/myorder-items/myorder-items.component';
+
+import {registerLocaleData} from '@angular/common';
+import br from '@angular/common/locales/br';
+registerLocaleData(br, 'pt-BR');
 
 @NgModule({
   declarations: [

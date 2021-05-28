@@ -59,8 +59,8 @@ export class CampanhaDetalhesComponent implements OnInit {
             this.campanhasService.updateProdutoCampanha(res)
             )
 
-          this.campanhasService.produtosCampanha(this.route.snapshot.params['id'])
-          .subscribe(produtoCampanha => this.campanhasService.updateProdutoCampanha(produtoCampanha))
+      this.campanhasService.produtosCampanha(this.route.snapshot.params['id'])
+      .subscribe(produtoCampanha => this.campanhasService.updateProdutoCampanha(produtoCampanha))
 
       this.campanhasService.campanha(this.route.snapshot.params['id'])
       .subscribe(res => this.campanha = res)

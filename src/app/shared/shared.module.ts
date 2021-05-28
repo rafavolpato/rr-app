@@ -17,6 +17,7 @@ import { LoggedInGuard } from 'app/security/loggedin.guard'
 import { RegisterService } from 'app/security/register/register.service'
 import { MyordersService } from 'app/myorders/myorders.service'
 import { DataService } from 'app/shared/data/data.service'
+import { PageService } from './page/page.service';
 
 declare module "@angular/core" {
   interface ModuleWithProviders<T = any> {
@@ -45,6 +46,7 @@ export class SharedModule {
         LoggedInGuard,
         RegisterService,
         MyordersService,
+        PageService,
         DataService]
     }
   }
